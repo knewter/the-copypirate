@@ -21,4 +21,7 @@ class Camera
 	@engine = engine
 	@controll = controller
     end
+    def set
+	@p = @controll.player
+    end
 end
