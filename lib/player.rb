@@ -23,5 +23,13 @@ class Player
 	super
 	@image = Rubygame::Surface.load("data/player.png")
 	@rect = Rubygame::Rect.new(350,550,*@image.size)
+	@action = 0
+    end
+    def pos
+	@rect.centerx += @x
+    end
+    def act
+	@x = @action
+	pos()
     end
 end

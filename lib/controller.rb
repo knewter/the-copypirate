@@ -29,6 +29,7 @@ class Controller
 	@background.blit(@data.display.screen,[0,0])
     end
     def action
+	@player.act()
 	@player.draw(@data.display.screen)
     end
     def mode
@@ -43,6 +44,23 @@ class Controller
 		    when Rubygame::K_ESCAPE
 			Rubygame.quit()
 			exit
+		    when Rubygame::K_RIGHT
+			@player.action = 10
+			@act = true
+		    when Rubygame::K_LEFT
+			@player.action = -10
+			@act = false
+		    end
+		when Rubygame::KeyUpEvent
+		    case ev.key
+		    when Rubygame::K_RIGHT
+			if @act != false
+			    @player.action = 0
+			end
+		    when Rubygame::K_LEFT
+			if @act != true
+			    @player.action = 0
+			end
 		    end
 		end
 	    end
