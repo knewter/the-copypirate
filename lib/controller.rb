@@ -33,6 +33,7 @@ class Controller
     def action
 	@player.act()
 	@player.draw(@data.display.screen)
+	@mapsprites.draw(@data.display.screen)
     end
     def mode
 	loop do
