@@ -24,6 +24,7 @@ require 'lib/starter.rb'
 require 'lib/controller.rb'
 require 'lib/player.rb'
 require 'lib/mapengine.rb'
+require 'lib/mapdata.rb'
 include Rubygame
 TTF.setup
 

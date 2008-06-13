@@ -16,16 +16,8 @@
 
 #You can contact the author at wikipediankiba@gmail.com
 
-class MapEngine
-    def initialize(sprites)
-	@sprites = sprites
-	@m = []
-	@c = []
-	@mapobj = []
-	@obj = []
-	@move = 0
-	@height = 0
-	@poscompute = false
-	@mapdata = MapData.new(self)
+class MapData
+    def initialize engine
+	@engine = engine
     end
 end
