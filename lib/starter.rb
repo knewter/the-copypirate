@@ -1,5 +1,5 @@
-#Space Fighter Ace is a space invader clone
-#Copyright (C) 2006-2007  Han Dao
+#The CopyPirate
+#Copyright (C) 2008  Han Dao
 #
 #This program is free software: you can redistribute it and/or modify
 #it under the terms of the GNU General Public License as published by
@@ -23,6 +23,18 @@ class Starter
 	@background = Rubygame::Surface.load("data/titlescreen.jpeg")
 	@background.blit(@data.display.screen,[0,0])
     end
+    def ui
+	@data.declare(:menu)
+	@data.imageui.add("play.png",300,400)
+	@data.imageui.active() {
+	Controller.new(@data)
+	}
+	@data.imageui.add("quit.png",450,400)
+	@data.imageui.active() {
+	    Rubygame.quit()
+	    exit
+	}
+    end
     def play
 	loop do
 	    @q.each do |ev|
@@ -38,6 +50,7 @@ class Starter
 		    end
 		end
 	    end
+	    @data.display.screen.flip()
 	end
     end
 end

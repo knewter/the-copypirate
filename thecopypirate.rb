@@ -26,4 +26,5 @@ include Rubygame
 TTF.setup
 
 game = Starter.new
+game.ui()
 game.play()
