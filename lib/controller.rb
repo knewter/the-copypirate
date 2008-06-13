@@ -18,5 +18,12 @@
 
 class Controller
     def initialize data
+	@data = data
+	@data.clear()
+	@background = Rubygame::Surface.load("data/pine.jpeg")
+	undraw()
+    end
+    def undraw
+	@background.blit(@data.display.screen,[0,0])
     end
 end
