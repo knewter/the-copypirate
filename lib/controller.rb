@@ -45,21 +45,37 @@ class Controller
 			Rubygame.quit()
 			exit
 		    when Rubygame::K_RIGHT
-			@player.action = 10
+			@player.actionx = 10
 			@act = true
 		    when Rubygame::K_LEFT
-			@player.action = -10
+			@player.actionx = -10
 			@act = false
+		    when Rubygame::K_DOWN
+			@player.actionx = 0
+			@player.actiony = 10
+			@act = 3
+		    when Rubygame::K_UP
+			@player.actionx = 0
+			@player.actiony = -10
+			@act = 4
 		    end
 		when Rubygame::KeyUpEvent
 		    case ev.key
 		    when Rubygame::K_RIGHT
-			if @act != false
-			    @player.action = 0
+			if @act == true
+			    @player.actionx = 0
 			end
 		    when Rubygame::K_LEFT
-			if @act != true
-			    @player.action = 0
+			if @act == false
+			    @player.actionx = 0
+			end
+		    when Rubygame::K_DOWN
+			if @act == 3
+			    @player.actiony = 0
+			end
+		    when Rubygame::K_UP
+			if @act == 4
+			    @player.actiony = 0
 			end
 		    end
 		end
