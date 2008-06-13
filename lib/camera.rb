@@ -20,8 +20,66 @@ class Camera
     def initialize engine , controller
 	@engine = engine
 	@controll = controller
+	@move = @engine.move
+	@mapobj = @engine.mapobj
     end
     def set
 	@p = @controll.player
+    end
+    def compute
+	backwardcompute()
+	forwardcompute()
+    end
+    def backwardcompute
+	if @p.rect.x < 250
+	    move = 250 - @p.rect.x
+	    @move += move
+	    if leftlimit() == true
+		return
+	    end
+	    xsynchronize(move)
+	end
+    end
+    def forwardcompute
+	if @p.rect.x > 350
+	    move = @p.rect.x - 350
+	    @move -= move
+	    if rightlimit() == true
+		return
+	    end
+	    move = -move
+	    xsynchronize(move)
+	end
+    end
+    def rightlimit
+	if @move < -1600
+	    @move = -1600
+	    s = @mapobj[0].rect.x + 1600
+	    limitactionx(s)
+	    return true
+	end
+	return false
+    end
+    def leftlimit
+	if @move > 0
+	    @move = 0
+	    s = @mapobj[0].rect.x
+	    limitactionx(s)
+	    return true
+	end
+	return false
+    end
+    def xsynchronize move
+	@mapobj.each do |m|
+	    m.rect.x += move
+	end
+	if @engine.poscompute == true
+	   @p.rect.x += move
+	end
+    end
+    def limitactionx s
+	@mapobj.each do |m|
+	    m.rect.x -= s
+	end
     end
 end

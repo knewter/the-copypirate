@@ -25,7 +25,7 @@ class Controller
 	@mapsprites = Rubygame::Sprites::Group.new()
 	@engine = MapEngine.new(@mapsprites,self)
 	@player = Player.new()
-	@engine.camera.set()
+	@engine.set()
 	undraw()
 	@q = Rubygame::EventQueue.new()
     end
@@ -34,6 +34,7 @@ class Controller
     end
     def action
 	@player.act()
+	@engine.camera.compute()
 	@player.draw(@data.display.screen)
 	@mapsprites.draw(@data.display.screen)
     end
