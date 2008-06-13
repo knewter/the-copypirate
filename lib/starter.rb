@@ -27,7 +27,8 @@ class Starter
 	@data.declare(:menu)
 	@data.imageui.add("play.png",300,400)
 	@data.imageui.active() {
-	    Controller.new(@data)
+	    control = Controller.new(@data)
+	    control.mode()
 	}
 	@data.imageui.add("quit.png",450,400)
 	@data.imageui.active() {

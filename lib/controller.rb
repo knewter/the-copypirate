@@ -22,8 +22,26 @@ class Controller
 	@data.clear()
 	@background = Rubygame::Surface.load("data/pine.jpeg")
 	undraw()
+	@q = Rubygame::EventQueue.new()
     end
     def undraw
 	@background.blit(@data.display.screen,[0,0])
+    end
+    def mode
+	loop do
+	    @q.each do |ev|
+		case ev
+		when Rubygame::QuitEvent
+		    Rubygame.quit()
+		    exit
+		when Rubygame::KeyDownEvent
+		    case ev.key
+		    when Rubygame::K_ESCAPE
+			Rubygame.quit()
+			exit
+		    end
+		end
+	    end
+	end
     end
 end
