@@ -22,7 +22,7 @@ class MapEngine
 	@m = []
 	@c = []
 	@mapobj = []
-	@obj = []
+	@obj = MapObj.new()
 	@move = 0
 	@height = 0
 	@poscompute = false
