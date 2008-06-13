@@ -16,7 +16,7 @@
 
 #You can contact the author at wikipediankiba@gmail.com
 
-class Map:
+class MapTile
     include Rubygame::Sprites::Sprite
     def initialize
 	super

@@ -17,7 +17,7 @@
 #You can contact the author at wikipediankiba@gmail.com
 
 class MapEngine
-    attr_accessor :c , :obj
+    attr_accessor :c , :obj, :sprites, :mapobj
     def initialize(sprites)
 	@sprites = sprites
 	@m = []

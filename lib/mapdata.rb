@@ -20,6 +20,7 @@ class MapData
     def initialize engine
 	@engine = engine
 	coordinate()
+	datacompute()
     end
     def coordinate
 	rows = 0
@@ -36,6 +37,30 @@ class MapData
 	    if rows == 30
 		return
 	    end
+	end
+    end
+    def datacompute
+	n = 0
+	@engine.obj.m.each do |m|
+	    if m == 0:
+		image = Rubygame::Surface.load("data/blank.png")
+	    elsif m == 1:
+		image = Rubygame::Surface.load("data/wall1.png")
+	    elsif m == 2:
+		image = Rubygame::Surface.load("data/wall2.png")
+	    elsif m == 3:
+		image = Rubygame::Surface.load("data/wall3.png")
+	    elsif m == 4:
+		image = Rubygame::Surface.load("data/wall4.png")
+	    elsif m == 5:
+		image = Rubygame::Surface.load("data/wall5.png")
+	    end
+	    obj = MapTile.new()
+	    obj.imageload(image)
+	    obj.sets(@engine.c[n][0],@engine.c[n][1])
+	    @engine.mapobj << obj
+	    @engine.sprites << obj
+	    n = n + 1
 	end
     end
 end
