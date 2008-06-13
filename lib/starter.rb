@@ -27,7 +27,7 @@ class Starter
 	@data.declare(:menu)
 	@data.imageui.add("play.png",300,400)
 	@data.imageui.active() {
-	Controller.new(@data)
+	    Controller.new(@data)
 	}
 	@data.imageui.add("quit.png",450,400)
 	@data.imageui.active() {
@@ -48,8 +48,12 @@ class Starter
 			Rubygame.quit()
 			exit
 		    end
+		when Rubygame::MouseDownEvent
+		    @data.collide.check()
 		end
+		@data.mouse.tell(ev)
 	    end
+	    @data.mouse.update()
 	    @data.display.screen.flip()
 	end
     end
