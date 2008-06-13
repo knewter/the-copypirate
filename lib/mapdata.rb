@@ -25,7 +25,7 @@ class MapData
 	rows = 0
 	columns = 0
 	loop do
-	    a = columns * 8
+	    a = columns * 80
 	    b = rows * 60
 	    @engine.c << [a,b]
 	    columns += 1
