@@ -17,6 +17,7 @@
 #You can contact the author at wikipediankiba@gmail.com
 
 class Controller
+    attr_accessor :player
     def initialize data
 	@data = data
 	@data.clear()
@@ -24,6 +25,7 @@ class Controller
 	@mapsprites = Rubygame::Sprites::Group.new()
 	@engine = MapEngine.new(@mapsprites,self)
 	@player = Player.new()
+	@engine.camera.set()
 	undraw()
 	@q = Rubygame::EventQueue.new()
     end
