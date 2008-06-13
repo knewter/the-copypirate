@@ -22,6 +22,7 @@ class Camera
 	@controll = controller
 	@move = @engine.move
 	@mapobj = @engine.mapobj
+	@height = @engine.height
     end
     def set
 	@p = @controll.player
@@ -29,6 +30,8 @@ class Camera
     def compute
 	backwardcompute()
 	forwardcompute()
+	downcompute()
+	upcompute()
     end
     def backwardcompute
 	if @p.rect.x < 250
@@ -51,6 +54,27 @@ class Camera
 	    xsynchronize(move)
 	end
     end
+    def downcompute
+	if @p.rect.y > 530
+	    move = @p.rect.y - 530
+	    @height -= move
+	    if downlimit() == true
+		return
+	    end
+	    move = -move
+	    ysynchronize(move)
+	end
+    end
+    def upcompute
+	if @p.rect.y < 60
+	    move = 60 - @p.rect.y
+	    @height += move
+	    if uplimit() == true
+		return
+	    end
+	    ysynchronize(move)
+	end
+    end
     def rightlimit
 	if @move < -1600
 	    @move = -1600
@@ -69,6 +93,24 @@ class Camera
 	end
 	return false
     end
+    def downlimit
+	if @height < -1200
+	    @height = -1200
+	    s = @mapobj[0].rect.y + 1200
+	    limitactiony(s)
+	    return true
+	end
+	return false
+    end
+    def uplimit
+	if @height > 0
+	    @height = 0
+	    s = @mapobj[0].rect.y
+	    limitactiony(s)
+	    return true
+	end
+	return false
+    end
     def xsynchronize move
 	@mapobj.each do |m|
 	    m.rect.x += move
@@ -77,9 +119,22 @@ class Camera
 	   @p.rect.x += move
 	end
     end
+    def ysynchronize move
+	@mapobj.each do |m|
+	    m.rect.y += move
+	end
+	if @engine.poscompute == true
+	    @p.rect.y += move
+	end
+    end
     def limitactionx s
 	@mapobj.each do |m|
 	    m.rect.x -= s
+	end
+    end
+    def limitactiony s
+	@mapobj.each do |m|
+	    m.rect.y -= s
 	end
     end
 end
