@@ -21,6 +21,8 @@ class Controller
 	@data = data
 	@data.clear()
 	@background = Rubygame::Surface.load("data/pine.jpeg")
+	@mapsprites = Rubygame::Sprites::Group.new()
+	@engine = MapEngine.new(@mapsprites)
 	@player = Player.new()
 	undraw()
 	@q = Rubygame::EventQueue.new()

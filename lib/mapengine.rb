@@ -17,11 +17,14 @@
 #You can contact the author at wikipediankiba@gmail.com
 
 class MapEngine
-    def initialize
+    def initialize(sprites)
+	@sprites = sprites
 	@m = []
 	@c = []
 	@mapobj = []
 	@obj = []
 	@move = 0
 	@height = 0
-	@poscompute = False
+	@poscompute = false
+    end
+end
