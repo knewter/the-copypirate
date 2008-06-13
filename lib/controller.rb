@@ -21,11 +21,15 @@ class Controller
 	@data = data
 	@data.clear()
 	@background = Rubygame::Surface.load("data/pine.jpeg")
+	@player = Player.new()
 	undraw()
 	@q = Rubygame::EventQueue.new()
     end
     def undraw
 	@background.blit(@data.display.screen,[0,0])
+    end
+    def action
+	@player.draw(@data.display.screen)
     end
     def mode
 	loop do
@@ -42,6 +46,9 @@ class Controller
 		    end
 		end
 	    end
+	    undraw()
+	    action()
+	    @data.display.screen.flip()
 	end
     end
 end
