@@ -63,22 +63,26 @@ class Controller
 		    case ev.key
 		    when Rubygame::K_RIGHT
 			if @act == true
-			    @player.actionx = 0
+			    cancel()
 			end
 		    when Rubygame::K_LEFT
 			if @act == false
-			    @player.actionx = 0
+			    cancel()
 			end
 		    when Rubygame::K_DOWN
 			if @act == 3
-			    @player.actiony = 0
+			    cancel()
 			end
 		    when Rubygame::K_UP
 			if @act == 4
-			    @player.actiony = 0
+			    cancel()
 			end
 		    end
 		end
+	    end
+	    def cancel
+		@player.actionx = 0
+		@player.actiony = 0
 	    end
 	    undraw()
 	    action()
