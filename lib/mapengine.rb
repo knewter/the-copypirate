@@ -18,7 +18,7 @@
 
 class MapEngine
     attr_accessor :c , :obj, :sprites, :mapobj
-    def initialize(sprites)
+    def initialize(sprites, controller)
 	@sprites = sprites
 	@m = []
 	@c = []
@@ -28,5 +28,6 @@ class MapEngine
 	@height = 0
 	@poscompute = false
 	@mapdata = MapData.new(self)
+	@camera = Camera.new(self,controller)
     end
 end
