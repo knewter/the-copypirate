@@ -1,4 +1,4 @@
-#The CopyPirate
+#CopyPirate
 #Copyright (C) 2008 Han Dao
 #
 #This program is free software: you can redistribute it and/or modify
@@ -16,20 +16,18 @@
 
 #You can contact the author at wikipediankiba@gmail.com
 
-require 'rubygems'
-require 'rubygame'
-require 'rbgooey'
-require 'yaml'
-require 'lib/starter.rb'
-require 'lib/controller.rb'
-require 'lib/player.rb'
-require 'lib/mapengine.rb'
-require 'lib/mapdata.rb'
-require 'lib/mapobj.rb'
-require 'lib/maptile.rb'
-include Rubygame
-TTF.setup
-
-game = Starter.new
-game.ui()
-game.play()
+class Map:
+    include Rubygame::Sprites::Sprite
+    def initialize
+	super
+	@image = Rubygame::Surface.load("data/blank.png")
+	@rect = Rubygame::Rect.new(0,0,*@image.size)
+    end
+    def sets x , y
+	@rect.x = x
+	@rect.y = y
+    end
+    def imageload image
+	@image = image
+    end
+end
