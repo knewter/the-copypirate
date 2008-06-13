@@ -19,5 +19,23 @@
 class MapData
     def initialize engine
 	@engine = engine
+	coordinate()
+    end
+    def coordinate
+	rows = 0
+	columns = 0
+	loop do
+	    a = columns * 8
+	    b = rows * 60
+	    @engine.c << [a,b]
+	    columns += 1
+	    if columns == 30:
+		rows += 1
+		columns = 0
+	    end
+	    if rows == 30
+		return
+	    end
+	end
     end
 end

@@ -17,6 +17,7 @@
 #You can contact the author at wikipediankiba@gmail.com
 
 class MapEngine
+    attr_accessor :c
     def initialize(sprites)
 	@sprites = sprites
 	@m = []
