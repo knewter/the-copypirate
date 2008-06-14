@@ -28,8 +28,8 @@ class Player
 	@retainer = [@rect.x,@rect.y]
     end
     def pos
-	@rect.centerx += @x
-	@rect.centery += @y
+	@rect.x += @x
+	@rect.y += @y
     end
     def act
 	@x = @actionx
