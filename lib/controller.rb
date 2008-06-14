@@ -22,6 +22,7 @@ class Controller
 	@data = data
 	@data.clear()
 	@background = Rubygame::Surface.load("data/pine.jpeg")
+	@enemytrack = EnemyTracker.new(self)
 	@mapsprites = Rubygame::Sprites::Group.new()
 	@engine = MapEngine.new(@mapsprites,self)
 	@player = Player.new()

@@ -18,7 +18,8 @@
 
 class EnemyTracker
     attr_accessor :target
-    def initialize
+    def initialize controller
+	@control = controller
 	@target = []
     end
 end
