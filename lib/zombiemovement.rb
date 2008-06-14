@@ -18,6 +18,7 @@
 
 
 class ZombieMovement
+    attr_accessor :x , :y
     def initialize zombie
 	@zombie = zombie
 	@rect = @zombie.rect

@@ -38,8 +38,10 @@ class Zombie
     def update move , dir
 	if dir == 0
 	    @rect.x += move
+	    @move.x += move
 	elsif dir == 1
 	    @rect.y += move
+	    @move.y += move
 	end
     end
 end
