@@ -26,6 +26,7 @@ class Player
 	@actionx = 0
 	@actiony = 0
 	@retainer = [@rect.x,@rect.y]
+	@health = 30
     end
     def pos
 	@rect.x += @x
