@@ -47,6 +47,7 @@ class EnemyTracker
 	    if e == 1
 		zombie = Zombie.new()
 		zombie.sets(@location[n][0],@location[n][1])
+		zombie.state = rand(2)
 		@target << zombie
 		@sprites << zombie
 	    end

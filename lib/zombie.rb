@@ -24,6 +24,7 @@ class Zombie
 	super
 	@image = Rubygame::Surface.load("data/zombie.png")
 	@rect = Rubygame::Rect.new(0,0,*@image.size)
+	@state = 0
     end
     def sets x , y
 	@rect.x = x
