@@ -117,6 +117,9 @@ class Camera
 	@mapobj.each do |m|
 	    m.rect.x += move
 	end
+	@items.each do |i|
+	    i.rect.x += move
+	end
 	if @engine.poscompute == true
 	   @p.rect.x += move
 	   @e.each do |e|
@@ -127,6 +130,9 @@ class Camera
     def ysynchronize move
 	@mapobj.each do |m|
 	    m.rect.y += move
+	end
+	@items.each do |i|
+	    i.rect.y += move
 	end
 	if @engine.poscompute == true
 	    @p.rect.y += move
@@ -139,10 +145,16 @@ class Camera
 	@mapobj.each do |m|
 	    m.rect.x -= s
 	end
+	@items.each do |i|
+	    i.rect.x -= s
+	end
     end
     def limitactiony s
 	@mapobj.each do |m|
 	    m.rect.y -= s
+	end
+	@items.each do |i|
+	    i.rect.y -= s
 	end
     end
 end
