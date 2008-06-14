@@ -17,7 +17,7 @@
 #You can contact the author at wikipediankiba@gmail.com
 
 class Controller
-    attr_accessor :player , :engine , :enemysprites
+    attr_accessor :player , :engine , :enemysprites , :enemytrack
     def initialize data
 	@data = data
 	@data.clear()

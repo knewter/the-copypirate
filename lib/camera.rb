@@ -19,13 +19,14 @@
 class Camera
     def initialize engine , controller
 	@engine = engine
-	@controll = controller
+	@control = controller
 	@move = @engine.move
 	@mapobj = @engine.mapobj
 	@height = @engine.height
     end
     def set
-	@p = @controll.player
+	@p = @control.player
+	@e = @control.enemytrack.target
     end
     def compute
 	backwardcompute()
@@ -117,6 +118,9 @@ class Camera
 	end
 	if @engine.poscompute == true
 	   @p.rect.x += move
+	   @e.each do |e|
+	      e.rect.x += move
+	   end
 	end
     end
     def ysynchronize move
