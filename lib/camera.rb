@@ -129,6 +129,9 @@ class Camera
 	end
 	if @engine.poscompute == true
 	    @p.rect.y += move
+	    @e.each do |e|
+		e.rect.y += move
+	    end
 	end
     end
     def limitactionx s
