@@ -35,20 +35,46 @@ class MapLaw
 	end
 	return 2
     end
+    def enemycollide t , n
+	c = 0
+	@e.each do |e|
+	    if n != c
+		if e.rect.collide_rect?(t)
+		    return 1
+		end
+	    end
+	    c += 1
+	end
+    end
     def compute
 	subsitute = revert(@p)
 	@p = subsitute
+	n = 0
 	@e.each do |e|
 	    t = revert(e)
 	    e = t
+	    t = enemyrevert(e,n)
+	    e = t
+	    n += 1
 	end
     end
     def revert t
 	s = mapcollide(t)
 	if s == 1:
-	    t.rect.x = t.retainer[0]
-	    t.rect.y = t.retainer[1]
+	    change(t)
 	end
+	return t
+    end
+    def enemyrevert t , n
+	e = enemycollide(t,n)
+	if e == 1:
+	    change(t)
+	end
+	return t
+    end
+    def change t
+	t.rect.x = t.retainer[0]
+	t.rect.y = t.retainer[1]
 	return t
     end
 end
