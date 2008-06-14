@@ -20,6 +20,7 @@
 class ZombieMovement
     def initialize zombie
 	@zombie = zombie
+	@rect = @zombie.rect
 	@goal = [0,0]
     end
     def set control
@@ -36,8 +37,33 @@ class ZombieMovement
 	if @goal == [0,0]
 	    @goal = [@zombie.rect.x + rand(51),@zombie.rect.y + rand(51)]
 	end
+	walk()
     end
     def attack
 	@goal = [@player.rect.x,@player.rect.y]
+	walk()
+    end
+    def walk
+	if @rect.centery < @goal[1]
+	    @rect.centery += 3
+	elsif @rect.centery > @goal[1]
+	    @rect.centery -= 3
+	end
+	if @rect.centerx < @goal[0]
+	    @rect.centerx += 3
+	elsif @rect.centerx > @goal[0]
+	    @rect.centerx -= 3
+	end
+	if @rect.centery - @goal[1] <= 3
+	    if @rect.centery - @goal[1] >= -3
+		@rect.centery = @goal[1]
+	    end
+	end
+	if @rect.centerx - @goal[0] <= 3
+	    if @rect.centerx - @goal[0] >= -3
+		@rect.centerx = @goal[0]
+	    end
+	end
+	@zombie.rect = @rect
     end
 end
