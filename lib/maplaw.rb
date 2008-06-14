@@ -18,7 +18,8 @@
 #You can contact the author at wikipediankiba@gmail.com
 
 class MapLaw
-    def initialize controller
+    def initialize engine , controller
+	@engine = engine
 	@control = controller
 	@p = @control.player
 	@e = @control.enemytrack.target
