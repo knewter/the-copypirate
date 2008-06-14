@@ -39,6 +39,7 @@ class Controller
 	@player.act()
 	@engine.camera.compute()
 	@player.draw(@data.display.screen)
+	@enemysprites.draw(@data.display.screen)
 	@mapsprites.draw(@data.display.screen)
     end
     def mode

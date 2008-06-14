@@ -43,7 +43,7 @@ class EnemyTracker
     end
     def create
 	n = 0
-	@mapobj.enemy do |e|
+	@mapobj.enemy.each do |e|
 	    if e == 1
 		zombie = Zombie.new()
 		zombie.sets(@location[n][0],@location[n][1])
