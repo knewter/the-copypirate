@@ -119,7 +119,7 @@ class Camera
 	if @engine.poscompute == true
 	   @p.rect.x += move
 	   @e.each do |e|
-	      e.rect.x += move
+	      e.update(move,0)
 	   end
 	end
     end
@@ -130,7 +130,7 @@ class Camera
 	if @engine.poscompute == true
 	    @p.rect.y += move
 	    @e.each do |e|
-		e.rect.y += move
+		e.update(move,1)
 	    end
 	end
     end

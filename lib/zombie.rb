@@ -35,4 +35,11 @@ class Zombie
     def act
 	@move.move()
     end
+    def update move , dir
+	if dir == 0
+	    @rect.x += move
+	elsif dir == 1
+	    @rect.y += move
+	end
+    end
 end
