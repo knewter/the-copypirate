@@ -36,13 +36,19 @@ class MapLaw
 	return 2
     end
     def compute
-	revert()
-    end
-    def revert
-	s = mapcollide(@p)
-	if s == 1:
-	    @p.rect.x = @p.retainer[0]
-	    @p.rect.y = @p.retainer[1]
+	subsitute = revert(@p)
+	@p = subsitute
+	@e.each do |e|
+	    t = revert(e)
+	    e = t
 	end
+    end
+    def revert t
+	s = mapcollide(t)
+	if s == 1:
+	    t.rect.x = t.retainer[0]
+	    t.rect.y = t.retainer[1]
+	end
+	return t
     end
 end

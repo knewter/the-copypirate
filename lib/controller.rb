@@ -46,6 +46,9 @@ class Controller
     def mode
 	loop do
 	    @player.retainer = [@player.rect.x,@player.rect.y]
+	    @enemytrack.target.each do |e|
+		e.retainer = [e.rect.x,e.rect.y]
+	    end
 	    @q.each do |ev|
 		case ev
 		when Rubygame::QuitEvent
