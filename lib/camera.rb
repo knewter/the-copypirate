@@ -20,12 +20,12 @@ class Camera
     def initialize engine , controller
 	@engine = engine
 	@control = controller
+	@p = @control.player
 	@move = @engine.move
 	@mapobj = @engine.mapobj
 	@height = @engine.height
     end
     def set
-	@p = @control.player
 	@e = @control.enemytrack.target
     end
     def compute

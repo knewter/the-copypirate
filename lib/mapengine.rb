@@ -36,7 +36,7 @@ class MapEngine
 	@camera.set()
     end
     def compute
-	@camera.compute()
 	@maplaw.compute()
+	@camera.compute()
     end
 end

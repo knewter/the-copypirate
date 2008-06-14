@@ -27,8 +27,10 @@ class MapLaw
     end
     def mapcollide t
 	@m.each do |m|
-	    if m.rect.collide_rect?(t.rect):
-		return 1
+	    if m.property == true
+		if m.rect.collide_rect?(t):
+		    return 1
+		end
 	    end
 	end
 	return 2

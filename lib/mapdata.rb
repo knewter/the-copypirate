@@ -58,6 +58,9 @@ class MapData
 	    obj = MapTile.new()
 	    obj.imageload(image)
 	    obj.sets(@engine.c[n][0],@engine.c[n][1])
+	    if m == 0
+		obj.property = false
+	    end
 	    @engine.mapobj << obj
 	    @engine.sprites << obj
 	    n = n + 1
