@@ -20,6 +20,7 @@
 class ZombieMovement
     def initialize zombie
 	@zombie = zombie
+	@goal = [0,0]
     end
     def move
 	if @zombie.state == 0
@@ -29,7 +30,9 @@ class ZombieMovement
 	end
     end
     def roam
-	puts"roam"
+	if @goal == [0,0]
+	    @goal = [@zombie.rect.x + rand(51),@zombie.rect.y + rand(51)]
+	end
     end
     def attack
 	puts"attack"
