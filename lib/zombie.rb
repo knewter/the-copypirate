@@ -25,9 +25,13 @@ class Zombie
 	@image = Rubygame::Surface.load("data/zombie.png")
 	@rect = Rubygame::Rect.new(0,0,*@image.size)
 	@state = 0
+	@move = ZombieMovement.new(self)
     end
     def sets x , y
 	@rect.x = x
 	@rect.y = y
+    end
+    def act
+	@move.move()
     end
 end

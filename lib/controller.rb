@@ -37,6 +37,7 @@ class Controller
     end
     def action
 	@player.act()
+	@enemytrack.act()
 	@engine.camera.compute()
 	@player.draw(@data.display.screen)
 	@enemysprites.draw(@data.display.screen)

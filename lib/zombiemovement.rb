@@ -21,4 +21,17 @@ class ZombieMovement
     def initialize zombie
 	@zombie = zombie
     end
+    def move
+	if @zombie.state == 0
+	    roam()
+	elsif @zombie.state == 1
+	    attack()
+	end
+    end
+    def roam
+	puts"roam"
+    end
+    def attack
+	puts"attack"
+    end
 end

@@ -59,4 +59,9 @@ class EnemyTracker
 	datacompute()
 	create()
     end
+    def act
+	@target.each do |t|
+	    t.act()
+	end
+    end
 end
