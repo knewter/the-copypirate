@@ -16,7 +16,10 @@
 
 #You can contact the author at wikipediankiba@gmail.com
 class ItemTracker
-    def initialize engine
+    def initialize engine , control
 	@engine = engine
+	@control = control
+	@items = []
+	@sprites = @control.itemsprites
     end
 end

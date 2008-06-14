@@ -27,7 +27,7 @@ class MapEngine
 	@move = 0
 	@height = 0
 	@poscompute = false
-	@items = ItemTracker.new(self)
+	@items = ItemTracker.new(self,controller)
 	@mapdata = MapData.new(self)
 	@camera = Camera.new(self,controller)
 	@maplaw = MapLaw.new(self,controller)
