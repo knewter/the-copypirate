@@ -1,5 +1,5 @@
-#The CopyPirate
-#Copyright (C) 2008 Han Dao
+#CopyPirate
+#Copyright (C) 2008  Han Dao
 #
 #This program is free software: you can redistribute it and/or modify
 #it under the terms of the GNU General Public License as published by
@@ -16,22 +16,9 @@
 
 #You can contact the author at wikipediankiba@gmail.com
 
-require 'rubygems'
-require 'rubygame'
-require 'rbgooey'
-require 'yaml'
-require 'lib/starter.rb'
-require 'lib/controller.rb'
-require 'lib/player.rb'
-require 'lib/mapengine.rb'
-require 'lib/mapdata.rb'
-require 'lib/mapobj.rb'
-require 'lib/maptile.rb'
-require 'lib/camera.rb'
-require 'lib/enemytracker.rb'
-include Rubygame
-TTF.setup
-
-game = Starter.new
-game.ui()
-game.play()
+class EnemyTracker
+    attr_accessor :target
+    def initialize
+	@target = []
+    end
+end
