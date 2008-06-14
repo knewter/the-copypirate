@@ -37,10 +37,16 @@ class ZombieMovement
     end
     def roam
 	if @x == 0 && @y == 0
-	    @x = @zombie.rect.x + rand(51)
-	    @y = @zombie.rect.y + rand(51)
+	    random()
+	end
+	if @zombie.rect.x == @x && @zombie.rect.y == @y
+	    random()
 	end
 	walk()
+    end
+    def random
+	@x = @zombie.rect.x + rand(101)
+	@y = @zombie.rect.y + rand(101)
     end
     def attack
 	@x = @player.rect.x
@@ -48,24 +54,24 @@ class ZombieMovement
 	walk()
     end
     def walk
-	if @rect.centery < @y
-	    @rect.centery += 3
-	elsif @rect.centery > @y
-	    @rect.centery -= 3
+	if @rect.y < @y
+	    @rect.y += 3
+	elsif @rect.y > @y
+	    @rect.y -= 3
 	end
-	if @rect.centerx < @x
-	    @rect.centerx += 3
-	elsif @rect.centerx > @x
-	    @rect.centerx -= 3
+	if @rect.x < @x
+	    @rect.x += 3
+	elsif @rect.x > @x
+	    @rect.x -= 3
 	end
-	if @rect.centery - @y <= 3
-	    if @rect.centery - @y >= -3
-		@rect.centery = @y
+	if @rect.y - @y <= 3
+	    if @rect.y - @y >= -3
+		@rect.y = @y
 	    end
 	end
-	if @rect.centerx - @x <= 3
-	    if @rect.centerx - @x >= -3
-		@rect.centerx = @x
+	if @rect.x - @x <= 3
+	    if @rect.x - @x >= -3
+		@rect.x = @x
 	    end
 	end
 	@zombie.rect = @rect
