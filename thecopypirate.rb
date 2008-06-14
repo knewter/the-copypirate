@@ -30,6 +30,7 @@ require 'lib/maptile.rb'
 require 'lib/camera.rb'
 require 'lib/enemytracker.rb'
 require 'lib/zombie.rb'
+require 'lib/zombiemovement.rb'
 include Rubygame
 TTF.setup
 
