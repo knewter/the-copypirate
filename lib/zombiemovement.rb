@@ -22,6 +22,9 @@ class ZombieMovement
 	@zombie = zombie
 	@goal = [0,0]
     end
+    def set control
+	@player = control.player
+    end
     def move
 	if @zombie.state == 0
 	    roam()
@@ -35,6 +38,6 @@ class ZombieMovement
 	end
     end
     def attack
-	puts"attack"
+	@goal = [@player.rect.x,@player.rect.y]
     end
 end

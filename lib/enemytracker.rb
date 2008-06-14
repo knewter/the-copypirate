@@ -46,7 +46,7 @@ class EnemyTracker
 	@mapobj.enemy.each do |e|
 	    if e == 1
 		zombie = Zombie.new()
-		zombie.sets(@location[n][0],@location[n][1])
+		zombie.sets(@location[n][0],@location[n][1],@control)
 		zombie.state = rand(2)
 		@target << zombie
 		@sprites << zombie

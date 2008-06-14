@@ -27,9 +27,10 @@ class Zombie
 	@state = 0
 	@move = ZombieMovement.new(self)
     end
-    def sets x , y
+    def sets x , y , control
 	@rect.x = x
 	@rect.y = y
+	@move.set(control)
     end
     def act
 	@move.move()
