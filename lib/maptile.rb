@@ -18,6 +18,7 @@
 
 class MapTile
     include Rubygame::Sprites::Sprite
+    attr_accessor :rect , :image
     def initialize
 	super
 	@image = Rubygame::Surface.load("data/blank.png")

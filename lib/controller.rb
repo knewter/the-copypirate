@@ -25,8 +25,8 @@ class Controller
 	@enemysprites = Rubygame::Sprites::Group.new()
 	@background = Rubygame::Surface.load("data/pine.jpeg")
 	@enemytrack = EnemyTracker.new(self)
-	@engine = MapEngine.new(@mapsprites,self)
 	@player = Player.new()
+	@engine = MapEngine.new(@mapsprites,self)
 	@engine.set()
 	@enemytrack.generate()
 	undraw()
@@ -38,7 +38,7 @@ class Controller
     def action
 	@player.act()
 	@enemytrack.act()
-	@engine.camera.compute()
+	@engine.compute()
 	@player.draw(@data.display.screen)
 	@enemysprites.draw(@data.display.screen)
 	@mapsprites.draw(@data.display.screen)
@@ -46,6 +46,7 @@ class Controller
     def mode
 	loop do
 	    @q.each do |ev|
+		@player.retainer = [@player.rect.x,@player.rect.y]
 		case ev
 		when Rubygame::QuitEvent
 		    Rubygame.quit()

@@ -20,17 +20,27 @@
 class MapLaw
     def initialize engine , controller
 	@engine = engine
-	@m = @engine.obj.m
+	@m = @engine.mapobj
 	@control = controller
 	@p = @control.player
 	@e = @control.enemytrack.target
     end
     def mapcollide t
 	@m.each do |m|
-	    if m.rect.colliderect(t.rect):
+	    if m.rect.collide_rect?(t.rect):
 		return 1
 	    end
 	end
 	return 2
+    end
+    def compute
+	revert()
+    end
+    def revert
+	s = mapcollide(@p)
+	if s == 1:
+	    @p.rect.x = @p.retainer[0]
+	    @p.rect.y = @p.retainer[1]
+	end
     end
 end

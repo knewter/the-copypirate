@@ -35,4 +35,8 @@ class MapEngine
 	@poscompute = true
 	@camera.set()
     end
+    def compute
+	@camera.compute()
+	@maplaw.compute()
+    end
 end
