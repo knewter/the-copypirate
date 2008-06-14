@@ -45,8 +45,14 @@ class ZombieMovement
 	walk()
     end
     def random
-	@x = @zombie.rect.x + rand(101)
-	@y = @zombie.rect.y + rand(101)
+	choice = rand(2)
+	if choice == 0
+	    @x = @zombie.rect.x + rand(101)
+	    @y = @zombie.rect.y + rand(101)
+	elsif choice == 1
+	    @x = @zombie.rect.x - rand(101)
+	    @y = @zombie.rect.y - rand(101)
+	end
     end
     def attack
 	@x = @player.rect.x
