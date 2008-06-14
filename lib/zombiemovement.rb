@@ -24,6 +24,8 @@ class ZombieMovement
 	@rect = @zombie.rect
 	@x = 0
 	@y = 0
+	@new = Timer.new(5) { random() }
+	@new.start()
     end
     def set control
 	@player = control.player
@@ -36,6 +38,7 @@ class ZombieMovement
 	end
     end
     def roam
+	@new.check()
 	if @x == 0 && @y == 0
 	    random()
 	end
