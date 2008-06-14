@@ -40,8 +40,20 @@ class EnemyTracker
 	    end
 	end
     end
+    def create
+	n = 0
+	@mapobj.enemy do |e|
+	    if e == 1
+		zombie = Zombie.new()
+		zombie.sets(@location[n][0],@location[n][1])
+		@target << zombie
+	    end
+	    n += 1
+	end
+    end
     def generate
-	@mapobj = @controller.mapobj
+	@mapobj = @control.engine.obj
 	datacompute()
+	create()
     end
 end

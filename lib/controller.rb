@@ -17,7 +17,7 @@
 #You can contact the author at wikipediankiba@gmail.com
 
 class Controller
-    attr_accessor :player
+    attr_accessor :player , :engine
     def initialize data
 	@data = data
 	@data.clear()
