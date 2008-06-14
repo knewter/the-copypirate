@@ -22,6 +22,7 @@ class EnemyTracker
 	@control = controller
 	@target = []
 	@location = []
+	@sprites = @control.enemysprites
     end
     def datacompute()
 	rows = 0
@@ -47,6 +48,7 @@ class EnemyTracker
 		zombie = Zombie.new()
 		zombie.sets(@location[n][0],@location[n][1])
 		@target << zombie
+		@sprites << zombie
 	    end
 	    n += 1
 	end

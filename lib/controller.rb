@@ -17,13 +17,14 @@
 #You can contact the author at wikipediankiba@gmail.com
 
 class Controller
-    attr_accessor :player , :engine
+    attr_accessor :player , :engine , :enemysprites
     def initialize data
 	@data = data
 	@data.clear()
+	@mapsprites = Rubygame::Sprites::Group.new()
+	@enemysprites = Rubygame::Sprites::Group.new()
 	@background = Rubygame::Surface.load("data/pine.jpeg")
 	@enemytrack = EnemyTracker.new(self)
-	@mapsprites = Rubygame::Sprites::Group.new()
 	@engine = MapEngine.new(@mapsprites,self)
 	@player = Player.new()
 	@engine.set()
