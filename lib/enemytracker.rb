@@ -22,7 +22,6 @@ class EnemyTracker
 	@control = controller
 	@target = []
 	@location = []
-	generate()
     end
     def datacompute()
 	rows = 0
@@ -42,6 +41,7 @@ class EnemyTracker
 	end
     end
     def generate
+	@mapobj = @controller.mapobj
 	datacompute()
     end
 end

@@ -27,6 +27,7 @@ class Controller
 	@engine = MapEngine.new(@mapsprites,self)
 	@player = Player.new()
 	@engine.set()
+	@enemytrack.generate()
 	undraw()
 	@q = Rubygame::EventQueue.new()
     end
