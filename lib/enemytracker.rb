@@ -21,5 +21,27 @@ class EnemyTracker
     def initialize controller
 	@control = controller
 	@target = []
+	@location = []
+	generate()
+    end
+    def datacompute()
+	rows = 0
+	columns = 0
+	loop do
+	    a = columns * 80
+	    b = rows * 60
+	    @location << [a,b]
+	    columns += 1
+	    if columns == 30:
+		rows += 1
+		columns = 0
+	    end
+	    if rows == 30
+		return
+	    end
+	end
+    end
+    def generate
+	datacompute()
     end
 end
