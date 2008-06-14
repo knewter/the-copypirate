@@ -45,8 +45,8 @@ class Controller
     end
     def mode
 	loop do
+	    @player.retainer = [@player.rect.x,@player.rect.y]
 	    @q.each do |ev|
-		@player.retainer = [@player.rect.x,@player.rect.y]
 		case ev
 		when Rubygame::QuitEvent
 		    Rubygame.quit()
