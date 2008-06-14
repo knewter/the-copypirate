@@ -29,6 +29,7 @@ class MapEngine
 	@poscompute = false
 	@mapdata = MapData.new(self)
 	@camera = Camera.new(self,controller)
+	@maplaw = MapLaw.new(controller)
     end
     def set
 	@poscompute = true
