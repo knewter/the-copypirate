@@ -16,28 +16,15 @@
 
 #You can contact the author at wikipediankiba@gmail.com
 
-require 'rubygems'
-require 'rubygame'
-require 'rbgooey'
-require 'yaml'
-require 'lib/starter.rb'
-require 'lib/controller.rb'
-require 'lib/player.rb'
-require 'lib/mapengine.rb'
-require 'lib/mapdata.rb'
-require 'lib/mapobj.rb'
-require 'lib/maptile.rb'
-require 'lib/camera.rb'
-require 'lib/enemytracker.rb'
-require 'lib/zombie.rb'
-require 'lib/zombiemovement.rb'
-require 'lib/timer.rb'
-require 'lib/maplaw.rb'
-require 'lib/itemtracker.rb'
-require 'lib/item.rb'
-include Rubygame
-TTF.setup
-
-game = Starter.new
-game.ui()
-game.play()
+class Item
+    include Rubygame::Sprites::Sprite
+    def initialize
+	super
+	@image = Rubygame::Surface.load("data/music.png")
+	@rect = Rubygame::Rect.new(0,0, @image.size)
+    end
+    def sets x , y
+	@rect.x = x
+	@rect.y = y
+    end
+end
