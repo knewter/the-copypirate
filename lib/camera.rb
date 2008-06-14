@@ -23,6 +23,7 @@ class Camera
 	@p = @control.player
 	@move = @engine.move
 	@mapobj = @engine.mapobj
+	@items = @engine.items.items
 	@height = @engine.height
     end
     def set

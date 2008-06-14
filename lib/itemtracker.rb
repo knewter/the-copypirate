@@ -16,6 +16,7 @@
 
 #You can contact the author at wikipediankiba@gmail.com
 class ItemTracker
+    attr_accessor :items
     def initialize engine , control
 	@engine = engine
 	@control = control
