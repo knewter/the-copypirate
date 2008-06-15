@@ -52,6 +52,9 @@ class Controller
 		@gameover.lose()
 		return
 	    end
+	    if @player.items == true
+		@gameover.win()
+	    end
 	    @player.retainer = [@player.rect.x,@player.rect.y]
 	    @enemytrack.target.each do |e|
 		e.retainer = [e.rect.x,e.rect.y]

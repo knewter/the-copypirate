@@ -65,7 +65,7 @@ class MapData
 	    if m == 0
 		obj.property = false
 	    elsif m == 7
-		obj.property = false
+		obj.property = 3
 	    end
 	    @engine.mapobj << obj
 	    @engine.sprites << obj
