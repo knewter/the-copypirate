@@ -25,6 +25,14 @@ class MapLaw
 	@p = @control.player
 	@e = @control.enemytrack.target
 	@items = @engine.items.items
+	@damage = Timer.new(1) {
+	    @p.health -= 2
+	    puts"Ouch!"
+	    if @p.health < 0
+		puts"you're dead"
+	    end
+	}
+	@damage.start()
     end
     def mapcollide t
 	@m.each do |m|
@@ -59,6 +67,7 @@ class MapLaw
 	    n += 1
 	end
 	itemscheck()
+	underattack?()
     end
     def revert t
 	s = mapcollide(t)
@@ -97,5 +106,12 @@ class MapLaw
 	end
 	@control.itemsprites.delete(@items[n])
 	@items.delete_at(n)
+    end
+    def underattack?
+	@e.each do |e|
+	    if e.rect.collide_rect?(@p)
+		@damage.check()
+	    end
+	end
     end
 end

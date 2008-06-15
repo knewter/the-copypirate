@@ -18,7 +18,7 @@
 
 class Player
     include Rubygame::Sprites::Sprite
-    attr_accessor :actionx , :actiony ,:state , :retainer , :rect , :items
+    attr_accessor :actionx , :actiony ,:state , :retainer , :rect , :items , :health
     def initialize
 	super
 	@image = Rubygame::Surface.load("data/player.png")
