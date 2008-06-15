@@ -19,7 +19,7 @@
 
 class Zombie
     include Rubygame::Sprites::Sprite
-    attr_accessor :action , :state , :retainer
+    attr_accessor :action , :state , :retainer , :health
     def initialize
 	super
 	@image = Rubygame::Surface.load("data/zombie.png")
@@ -27,6 +27,7 @@ class Zombie
 	@state = 0
 	@move = ZombieMovement.new(self)
 	@retainer = [@rect.x,@rect.y]
+	@health = 3
     end
     def sets x , y , control
 	@rect.x = x
