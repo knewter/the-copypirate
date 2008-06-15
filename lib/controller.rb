@@ -47,6 +47,7 @@ class Controller
 	@enemysprites.draw(@data.display.screen)
 	@itemsprites.draw(@data.display.screen)
 	@mapsprites.draw(@data.display.screen)
+	@data.text.render.draw(:points)
     end
     def mode
 	loop do
