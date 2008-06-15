@@ -49,7 +49,7 @@ class Controller
     def mode
 	loop do
 	    if @player.health < 0
-		@gameover.run()
+		@gameover.lose()
 		return
 	    end
 	    @player.retainer = [@player.rect.x,@player.rect.y]

@@ -20,7 +20,16 @@ class GameOver
     def initialize data
 	@data = data
 	@gameover = Rubygame::Surface.load("data/gameover.png")
+	@winner = Rubygame::Surface.load("data/win.png")
 	@q = Rubygame::EventQueue.new()
+    end
+    def lose
+	@gameover.blit(@data.display.screen,[0,0])
+	run()
+    end
+    def win
+	@winner.blit(@data.display.screen,[0,0])
+	run()
     end
     def run
 	@gameover.blit(@data.display.screen,[0,0])
