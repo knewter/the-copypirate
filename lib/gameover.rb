@@ -19,5 +19,6 @@
 class GameOver
     def initialize data
 	@data = data
+	@gameover = Rubygame::Surface.load("data/gameover.png")
     end
 end
