@@ -68,6 +68,7 @@ class MapLaw
 	end
 	itemscheck()
 	underattack?()
+	wincollide()
     end
     def revert t
 	s = mapcollide(t)
@@ -111,6 +112,17 @@ class MapLaw
 	@e.each do |e|
 	    if e.rect.collide_rect?(@p)
 		@damage.check()
+	    end
+	end
+    end
+    def wincollide
+	@m.each do |m|
+	    if m.property == 3
+		if @p.items == 6
+		    if m.rect.collide_rect?(@p):
+			@p.items = true
+		    end
+		end
 	    end
 	end
     end

@@ -57,7 +57,7 @@ class MapData
 	    elsif m == 6:
 		image = Rubygame::Surface.load("data/wall6.png")
 	    elsif m == 7:
-		image = Rubygame::Surface.load("Data/internet.png")
+		image = Rubygame::Surface.load("data/internet.png")
 	    end
 	    obj = MapTile.new()
 	    obj.imageload(image)
