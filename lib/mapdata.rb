@@ -64,6 +64,8 @@ class MapData
 		image = Rubygame::Surface.load("data/wall8.png")
 	    elsif m == 10:
 		image = Rubygame::Surface.load("data/wall9.png")
+	    elsif m == 11:
+		image = Rubygame::Surface.load("data/wall10.png")
 	    end
 	    obj = MapTile.new()
 	    obj.imageload(image)
