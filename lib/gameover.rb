@@ -32,7 +32,6 @@ class GameOver
 	run()
     end
     def run
-	@gameover.blit(@data.display.screen,[0,0])
 	loop do
 	    @q.each do |ev|
 		case ev
