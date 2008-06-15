@@ -19,5 +19,12 @@
 class Hud
     def initialize data
 	@data = data
+	@data.declare("points")
+	@data.text.add("Health : 30",0,0)
+	@data.text.add("Items : 0",200,0)
+    end
+    def change health , items
+	@data.string[0] = "Health : #{health}"
+	@data.string[1] = "Items : #{items}"
     end
 end

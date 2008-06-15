@@ -33,6 +33,7 @@ class Controller
 	@enemytrack.generate()
 	undraw()
 	@q = Rubygame::EventQueue.new()
+	@hud = Hud.new(@data)
     end
     def undraw
 	@background.blit(@data.display.screen,[0,0])
