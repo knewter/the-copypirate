@@ -43,6 +43,7 @@ class Controller
 	@enemytrack.act()
 	@engine.compute()
 	@player.draw(@data.display.screen)
+	@hud.change(@player.health,@player.items)
 	@enemysprites.draw(@data.display.screen)
 	@itemsprites.draw(@data.display.screen)
 	@mapsprites.draw(@data.display.screen)
