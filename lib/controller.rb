@@ -48,6 +48,10 @@ class Controller
     end
     def mode
 	loop do
+	    if @player.health < 0
+		@gameover.run()
+		return
+	    end
 	    @player.retainer = [@player.rect.x,@player.rect.y]
 	    @enemytrack.target.each do |e|
 		e.retainer = [e.rect.x,e.rect.y]

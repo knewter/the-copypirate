@@ -20,5 +20,25 @@ class GameOver
     def initialize data
 	@data = data
 	@gameover = Rubygame::Surface.load("data/gameover.png")
+	@q = Rubygame::EventQueue.new()
+    end
+    def run
+	@gameover.blit(@data.display.screen,[0,0])
+	loop do
+	    @q.each do |ev|
+		case ev
+		when Rubygame::QuitEvent
+		    Rubygame.quit()
+		    exit
+		when Rubygame::KeyDownEvent
+		    case ev.key
+		    when Rubygame::K_ESCAPE
+			Rubygame.quit()
+			exit
+		    end
+		end
+	    end
+	    @data.display.screen.flip()
+	end
     end
 end
