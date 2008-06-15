@@ -24,6 +24,7 @@ class MapLaw
 	@control = controller
 	@p = @control.player
 	@e = @control.enemytrack.target
+	@items = @engine.items.items
     end
     def mapcollide t
 	@m.each do |m|
@@ -57,6 +58,7 @@ class MapLaw
 	    e = t
 	    n += 1
 	end
+	itemscheck()
     end
     def revert t
 	s = mapcollide(t)
@@ -76,5 +78,24 @@ class MapLaw
 	t.rect.x = t.retainer[0]
 	t.rect.y = t.retainer[1]
 	return t
+    end
+    def itemscollide
+	n = 0
+	@items.each do |i|
+	    if i.rect.collide_rect?(@p)
+		@p.items += 1
+		return n
+	    end
+	    n += 1
+	end
+	n = -1
+    end
+    def itemscheck
+	n = itemscollide()
+	if n == -1
+	    return
+	end
+	@control.itemsprites.delete(@items[n])
+	@items.delete_at(n)
     end
 end

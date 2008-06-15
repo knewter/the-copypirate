@@ -18,10 +18,11 @@
 
 class Item
     include Rubygame::Sprites::Sprite
+	attr_accessor :rect
     def initialize
 	super
 	@image = Rubygame::Surface.load("data/music.png")
-	@rect = Rubygame::Rect.new(0,0, @image.size)
+	@rect = Rubygame::Rect.new(0,0, *@image.size)
     end
     def sets x , y
 	@rect.x = x
