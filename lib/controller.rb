@@ -20,6 +20,7 @@ class Controller
     attr_accessor :player , :engine , :enemysprites , :enemytrack , :itemsprites
     def initialize data
 	@data = data
+	@gameover = GameOver.new(@data)
 	@data.clear()
 	@mapsprites = Rubygame::Sprites::Group.new()
 	@enemysprites = Rubygame::Sprites::Group.new()
