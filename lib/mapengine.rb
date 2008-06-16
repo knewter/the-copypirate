@@ -17,27 +17,30 @@
 #You can contact the author at wikipediankiba@gmail.com
 
 class MapEngine
-    attr_accessor :c , :obj, :sprites, :mapobj , :camera , :poscompute , :move , :height , :items
-    def initialize(sprites, controller)
-	@sprites = sprites
-	@m = []
-	@c = []
-	@mapobj = []
-	@obj = MapObj.new()
-	@move = 0
-	@height = 0
-	@poscompute = false
-	@items = ItemTracker.new(self,controller)
-	@mapdata = MapData.new(self)
-	@camera = Camera.new(self,controller)
-	@maplaw = MapLaw.new(self,controller)
-    end
-    def set
-	@poscompute = true
-	@camera.set()
-    end
-    def compute
-	@maplaw.compute()
-	@camera.compute()
-    end
+  attr_accessor :c, :obj, :sprites, :mapobj, :camera, :poscompute, :move, :height, :items
+
+  def initialize(sprites, controller)
+    @sprites = sprites
+    @m       = []
+    @c       = []
+    @mapobj  = []
+    @obj     = MapObj.new()
+    @move    = 0
+    @height  = 0
+    @poscompute = false
+    @items   = ItemTracker.new(self,controller)
+    @mapdata = MapData.new(self)
+    @camera  = Camera.new(self,controller)
+    @maplaw  = MapLaw.new(self,controller)
+  end
+
+  def set
+    @poscompute = true
+    @camera.set()
+  end
+
+  def compute
+    @maplaw.compute()
+    @camera.compute()
+  end
 end

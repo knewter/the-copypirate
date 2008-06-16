@@ -17,69 +17,70 @@
 #You can contact the author at wikipediankiba@gmail.com
 
 class MapData
-    def initialize engine
-	@engine = engine
-	coordinate()
-	datacompute()
-    end
-    def coordinate
-	rows = 0
-	columns = 0
-	loop do
+  def initialize engine
+    @engine = engine
+    coordinate()
+    datacompute()
+  end
+  def coordinate
+    rows = 0
+    columns = 0
+    loop do
 	    a = columns * 80
 	    b = rows * 60
 	    @engine.c << [a,b]
 	    columns += 1
-	    if columns == 30:
-		rows += 1
-		columns = 0
+	    if columns == 30
+        rows += 1
+        columns = 0
 	    end
 	    if rows == 30
-		return
+        return
 	    end
-	end
     end
-    def datacompute
-	n = 0
-	@engine.obj.m.each do |m|
-	    if m == 0:
-		image = Rubygame::Surface.load("data/blank.png")
-	    elsif m == 1:
-		image = Rubygame::Surface.load("data/wall1.png")
-	    elsif m == 2:
-		image = Rubygame::Surface.load("data/wall2.png")
-	    elsif m == 3:
-		image = Rubygame::Surface.load("data/wall3.png")
-	    elsif m == 4:
-		image = Rubygame::Surface.load("data/wall4.png")
-	    elsif m == 5:
-		image = Rubygame::Surface.load("data/wall5.png")
-	    elsif m == 6:
-		image = Rubygame::Surface.load("data/wall6.png")
-	    elsif m == 7:
-		image = Rubygame::Surface.load("data/internet.png")
-	    elsif m == 8:
-		image = Rubygame::Surface.load("data/wall7.png")
-	    elsif m == 9:
-		image = Rubygame::Surface.load("data/wall8.png")
-	    elsif m == 10:
-		image = Rubygame::Surface.load("data/wall9.png")
-	    elsif m == 11:
-		image = Rubygame::Surface.load("data/wall10.png")
-	    elsif m == 12:
-		image = Rubygame::Surface.load("data/wall11.png")
+  end
+  def datacompute
+    n = 0
+    @engine.obj.m.each do |m|
+      # NOTE: CASE STATEMENT!!!!!!!!!
+	    if m == 0
+        image = Rubygame::Surface.load("data/blank.png")
+	    elsif m == 1
+        image = Rubygame::Surface.load("data/wall1.png")
+	    elsif m == 2
+        image = Rubygame::Surface.load("data/wall2.png")
+	    elsif m == 3
+        image = Rubygame::Surface.load("data/wall3.png")
+	    elsif m == 4
+        image = Rubygame::Surface.load("data/wall4.png")
+	    elsif m == 5
+        image = Rubygame::Surface.load("data/wall5.png")
+	    elsif m == 6
+        image = Rubygame::Surface.load("data/wall6.png")
+	    elsif m == 7
+        image = Rubygame::Surface.load("data/internet.png")
+	    elsif m == 8
+        image = Rubygame::Surface.load("data/wall7.png")
+	    elsif m == 9
+        image = Rubygame::Surface.load("data/wall8.png")
+	    elsif m == 10
+        image = Rubygame::Surface.load("data/wall9.png")
+	    elsif m == 11
+        image = Rubygame::Surface.load("data/wall10.png")
+	    elsif m == 12
+        image = Rubygame::Surface.load("data/wall11.png")
 	    end
 	    obj = MapTile.new()
 	    obj.imageload(image)
 	    obj.sets(@engine.c[n][0],@engine.c[n][1])
 	    if m == 0
-		obj.property = false
+        obj.property = false
 	    elsif m == 7
-		obj.property = 3
+        obj.property = 3
 	    end
 	    @engine.mapobj << obj
 	    @engine.sprites << obj
 	    n = n + 1
-	end
     end
+  end
 end

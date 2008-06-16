@@ -17,45 +17,47 @@
 #You can contact the author at wikipediankiba@gmail.com
 
 class Starter
-    def initialize
-	@data = UiData.new("data/setup.yml")
-	@q = Rubygame::EventQueue.new()
-	@background = Rubygame::Surface.load("data/titlescreen.jpeg")
-	@background.blit(@data.display.screen,[0,0])
-    end
-    def ui
-	@data.declare(:menu)
-	@data.imageui.add("play.png",300,400)
-	@data.imageui.active() {
+  def initialize
+    @data = UiData.new("data/setup.yml")
+    @q = Rubygame::EventQueue.new()
+    @background = Rubygame::Surface.load("data/titlescreen.jpeg")
+    @background.blit(@data.display.screen,[0,0])
+  end
+
+  def ui
+    @data.declare(:menu)
+    @data.imageui.add("play.png",300,400)
+    @data.imageui.active() {
 	    control = Controller.new(@data)
 	    control.mode()
-	}
-	@data.imageui.add("quit.png",450,400)
-	@data.imageui.active() {
+    }
+    @data.imageui.add("quit.png",450,400)
+    @data.imageui.active() {
 	    Rubygame.quit()
 	    exit
-	}
-    end
-    def play
-	loop do
+    }
+  end
+
+  def play
+    loop do
 	    @q.each do |ev|
-		case ev
-		when Rubygame::QuitEvent
-		    Rubygame.quit()
-		    exit
-		when Rubygame::KeyDownEvent
-		    case ev.key
-		    when Rubygame::K_ESCAPE
-			Rubygame.quit()
-			exit
-		    end
-		when Rubygame::MouseDownEvent
-		    @data.collide.check()
-		end
-		@data.mouse.tell(ev)
-	    end
+        case ev
+        when Rubygame::QuitEvent
+          Rubygame.quit()
+          exit
+        when Rubygame::KeyDownEvent
+          case ev.key
+          when Rubygame::K_ESCAPE
+            Rubygame.quit()
+            exit
+          end
+        when Rubygame::MouseDownEvent
+          @data.collide.check()
+        end
+        @data.mouse.tell(ev)
+      end
 	    @data.mouse.update()
 	    @data.display.screen.flip()
-	end
     end
+  end
 end

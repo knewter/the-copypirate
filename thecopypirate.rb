@@ -16,27 +16,29 @@
 
 #You can contact the author at wikipediankiba@gmail.com
 
-require 'rubygems'
-require 'rubygame'
-require 'rbgooey'
-require 'yaml'
-require 'lib/starter.rb'
-require 'lib/controller.rb'
-require 'lib/player.rb'
-require 'lib/mapengine.rb'
-require 'lib/mapdata.rb'
-require 'lib/mapobj.rb'
-require 'lib/maptile.rb'
-require 'lib/camera.rb'
-require 'lib/enemytracker.rb'
-require 'lib/zombie.rb'
-require 'lib/zombiemovement.rb'
-require 'lib/timer.rb'
-require 'lib/maplaw.rb'
-require 'lib/itemtracker.rb'
-require 'lib/item.rb'
-require 'lib/gameover.rb'
-require 'lib/hud.rb'
+%w{
+  rubygems
+  rubygame
+  rbgooey
+  yaml
+  lib/starter.rb
+  lib/controller.rb
+  lib/player.rb
+  lib/mapengine.rb
+  lib/mapdata.rb
+  lib/mapobj.rb
+  lib/maptile.rb
+  lib/camera.rb
+  lib/enemytracker.rb
+  lib/zombie.rb
+  lib/zombiemovement.rb
+  lib/timer.rb
+  lib/maplaw.rb
+  lib/itemtracker.rb
+  lib/item.rb
+  lib/gameover.rb
+  lib/hud.rb
+}.each{|lib| require lib}
 include Rubygame
 TTF.setup
 

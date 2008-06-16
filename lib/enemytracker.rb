@@ -17,51 +17,51 @@
 #You can contact the author at wikipediankiba@gmail.com
 
 class EnemyTracker
-    attr_accessor :target
-    def initialize controller
-	@control = controller
-	@target = []
-	@location = []
-	@sprites = @control.enemysprites
-    end
-    def datacompute()
-	rows = 0
-	columns = 0
-	loop do
+  attr_accessor :target
+  def initialize controller
+    @control = controller
+    @target = []
+    @location = []
+    @sprites = @control.enemysprites
+  end
+  def datacompute()
+    rows = 0
+    columns = 0
+    loop do
 	    a = columns * 80
 	    b = rows * 60
 	    @location << [a,b]
 	    columns += 1
 	    if columns == 30:
-		rows += 1
-		columns = 0
+        rows += 1
+        columns = 0
 	    end
 	    if rows == 30
-		return
+        return
 	    end
-	end
     end
-    def create
-	n = 0
-	@mapobj.enemy.each do |e|
+  end
+  def create
+    n = 0
+    @mapobj.enemy.each do |e|
 	    if e == 1
-		zombie = Zombie.new()
-		zombie.sets(@location[n][0],@location[n][1],@control)
-		zombie.state = rand(2)
-		@target << zombie
-		@sprites << zombie
+        zombie = Zombie.new()
+        zombie.sets(@location[n][0],@location[n][1],@control)
+        zombie.state = rand(2)
+        @target << zombie
+        @sprites << zombie
 	    end
 	    n += 1
-	end
     end
-    def generate
-	@mapobj = @control.engine.obj
-	datacompute()
-	create()
-    end
-    def act
-	@target.each do |t|
+  end
+  def generate
+    @mapobj = @control.engine.obj
+    datacompute()
+    create()
+  end
+  def act
+    @target.each do |t|
 	    t.act()
-	end
     end
+  end
 end

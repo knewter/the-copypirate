@@ -17,36 +17,38 @@
 #You can contact the author at wikipediankiba@gmail.com
 
 class GameOver
-    def initialize data
-	@data = data
-	@gameover = Rubygame::Surface.load("data/gameover.png")
-	@winner = Rubygame::Surface.load("data/win.png")
-	@q = Rubygame::EventQueue.new()
-    end
-    def lose
-	@gameover.blit(@data.display.screen,[0,0])
-	run()
-    end
-    def win
-	@winner.blit(@data.display.screen,[0,0])
-	run()
-    end
-    def run
-	loop do
+  GAMEOVER_IMAGE_PATH = "data/gameover.png"
+  WINNER_IMAGE_PATH   = "data/win.png"
+  def initialize data
+    @data = data
+    @gameover = Rubygame::Surface.load(GAMEOVER_IMAGE_PATH)
+    @winner = Rubygame::Surface.load(WINNER_IMAGE_PATH)
+    @q = Rubygame::EventQueue.new()
+  end
+  def lose
+    @gameover.blit(@data.display.screen,[0,0])
+    run()
+  end
+  def win
+    @winner.blit(@data.display.screen,[0,0])
+    run()
+  end
+  def run
+    loop do
 	    @q.each do |ev|
-		case ev
-		when Rubygame::QuitEvent
-		    Rubygame.quit()
-		    exit
-		when Rubygame::KeyDownEvent
-		    case ev.key
-		    when Rubygame::K_ESCAPE
-			Rubygame.quit()
-			exit
-		    end
-		end
+        case ev
+        when Rubygame::QuitEvent
+            Rubygame.quit()
+            exit
+        when Rubygame::KeyDownEvent
+            case ev.key
+            when Rubygame::K_ESCAPE
+          Rubygame.quit()
+          exit
+            end
+        end
 	    end
 	    @data.display.screen.flip()
-	end
     end
+  end
 end

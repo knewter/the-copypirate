@@ -18,71 +18,79 @@
 
 
 class ZombieMovement
-    attr_accessor :x , :y
-    def initialize zombie
-	@zombie = zombie
-	@rect = @zombie.rect
-	@x = 0
-	@y = 0
-	@new = Timer.new(5) { random() }
-	@new.start()
-    end
-    def set control
-	@player = control.player
-    end
-    def move
-	if @zombie.state == 0
+  attr_accessor :x , :y
+
+  def initialize zombie
+    @zombie = zombie
+    @rect = @zombie.rect
+    @x = 0
+    @y = 0
+    @new = Timer.new(5) { random() }
+    @new.start()
+  end
+
+  def set control
+    @player = control.player
+  end
+
+  def move
+    if @zombie.state == 0
 	    roam()
-	elsif @zombie.state == 1
+    elsif @zombie.state == 1
 	    attack()
-	end
     end
-    def roam
-	@new.check()
-	if @x == 0 && @y == 0
+  end
+
+  def roam
+    @new.check()
+    if @x == 0 && @y == 0
 	    random()
-	end
-	if @zombie.rect.x == @x && @zombie.rect.y == @y
-	    random()
-	end
-	walk()
     end
-    def random
-	choice = rand(2)
-	if choice == 0
+    if @zombie.rect.x == @x && @zombie.rect.y == @y
+	    random()
+    end
+    walk()
+  end
+
+  def random
+    choice = rand(2)
+    if choice == 0
 	    @x = @zombie.rect.x + rand(101)
 	    @y = @zombie.rect.y + rand(101)
-	elsif choice == 1
+    elsif choice == 1
 	    @x = @zombie.rect.x - rand(101)
 	    @y = @zombie.rect.y - rand(101)
-	end
     end
-    def attack
-	@x = @player.rect.x
-	@y = @player.rect.y
-	walk()
-    end
-    def walk
-	if @rect.y < @y
+  end
+
+  def attack
+    @x = @player.rect.x
+    @y = @player.rect.y
+    walk()
+  end
+
+  # NOTE: There has to be a better way than all these nested ifs
+  def walk
+    if @rect.y < @y
 	    @rect.y += 3
-	elsif @rect.y > @y
+    elsif @rect.y > @y
 	    @rect.y -= 3
-	end
-	if @rect.x < @x
-	    @rect.x += 3
-	elsif @rect.x > @x
-	    @rect.x -= 3
-	end
-	if @rect.y - @y <= 3
-	    if @rect.y - @y >= -3
-		@rect.y = @y
-	    end
-	end
-	if @rect.x - @x <= 3
-	    if @rect.x - @x >= -3
-		@rect.x = @x
-	    end
-	end
-	@zombie.rect = @rect
     end
+    if @rect.x < @x
+      @rect.x += 3
+    elsif @rect.x > @x
+	    @rect.x -= 3
+    end
+    if @rect.y - @y <= 3
+	    if @rect.y - @y >= -3
+        @rect.y = @y
+	    end
+    end
+    if @rect.x - @x <= 3
+	    if @rect.x - @x >= -3
+        @rect.x = @x
+	    end
+    end
+    @zombie.rect = @rect
+  end
 end

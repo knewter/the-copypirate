@@ -17,19 +17,22 @@
 #You can contact the author at wikipediankiba@gmail.com
 
 class MapTile
-    include Rubygame::Sprites::Sprite
-    attr_accessor :rect , :image , :property
-    def initialize
-	super
-	@image = Rubygame::Surface.load("data/blank.png")
-	@rect = Rubygame::Rect.new(0,0,*@image.size)
-	@property = true
-    end
-    def sets x , y
-	@rect.x = x
-	@rect.y = y
-    end
-    def imageload image
-	@image = image
-    end
+  include Rubygame::Sprites::Sprite
+  attr_accessor :rect , :image , :property
+
+  def initialize
+    super
+    @image = Rubygame::Surface.load("data/blank.png")
+    @rect = Rubygame::Rect.new(0,0,*@image.size)
+    @property = true
+  end
+
+  def sets x , y
+    @rect.x = x
+    @rect.y = y
+  end
+
+  def imageload image
+    @image = image
+  end
 end

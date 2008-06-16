@@ -18,112 +18,123 @@
 #You can contact the author at wikipediankiba@gmail.com
 
 class MapLaw
-    def initialize engine , controller
-	@engine = engine
-	@m = @engine.mapobj
-	@control = controller
-	@p = @control.player
-	@e = @control.enemytrack.target
-	@items = @engine.items.items
-	@damage = Timer.new(1) {
+  # NOTE: All these nested ifs should go away
+  def initialize engine , controller
+    @engine = engine
+    @m = @engine.mapobj
+    @control = controller
+    @p = @control.player
+    @e = @control.enemytrack.target
+    @items = @engine.items.items
+    @damage = Timer.new(1) {
 	    @p.health -= 2
-	    puts"Ouch!"
+	    puts "Ouch!"
 	    if @p.health < 0
-		puts"you're dead"
+        puts "you're dead"
 	    end
-	}
-	@damage.start()
-    end
-    def mapcollide t
-	@m.each do |m|
+    }
+    @damage.start()
+  end
+
+  def mapcollide t
+    @m.each do |m|
 	    if m.property == true
-		if m.rect.collide_rect?(t):
-		    return 1
-		end
+        if m.rect.collide_rect?(t)
+          return 1
+        end
 	    end
-	end
-	return 2
     end
-    def enemycollide t , n
-	c = 0
-	@e.each do |e|
+    return 2
+  end
+
+  def enemycollide t , n
+    c = 0
+    @e.each do |e|
 	    if n != c
-		if e.rect.collide_rect?(t)
-		    return 1
-		end
+        if e.rect.collide_rect?(t)
+          return 1
+        end
 	    end
 	    c += 1
-	end
     end
-    def compute
-	subsitute = revert(@p)
-	@p = subsitute
-	n = 0
-	@e.each do |e|
+  end
+
+  def compute
+    subsitute = revert(@p)
+    @p = subsitute
+    n = 0
+    @e.each do |e|
 	    t = revert(e)
 	    e = t
 	    t = enemyrevert(e,n)
 	    e = t
 	    n += 1
-	end
-	itemscheck()
-	underattack?()
-	wincollide()
     end
-    def revert t
-	s = mapcollide(t)
-	if s == 1:
+    itemscheck()
+    underattack?()
+    wincollide()
+  end
+
+  def revert t
+    s = mapcollide(t)
+    if s == 1
 	    change(t)
-	end
-	return t
     end
-    def enemyrevert t , n
-	e = enemycollide(t,n)
-	if e == 1:
+    return t
+  end
+
+  def enemyrevert t , n
+    e = enemycollide(t,n)
+    if e == 1
 	    change(t)
-	end
-	return t
     end
-    def change t
-	t.rect.x = t.retainer[0]
-	t.rect.y = t.retainer[1]
-	return t
-    end
-    def itemscollide
-	n = 0
-	@items.each do |i|
+    return t
+  end
+
+  def change t
+    t.rect.x = t.retainer[0]
+    t.rect.y = t.retainer[1]
+    return t
+  end
+
+  def itemscollide
+    n = 0
+    @items.each do |i|
 	    if i.rect.collide_rect?(@p)
-		@p.items += 1
-		return n
+        @p.items += 1
+        return n
 	    end
 	    n += 1
-	end
-	n = -1
     end
-    def itemscheck
-	n = itemscollide()
-	if n == -1
+    n = -1
+  end
+
+  def itemscheck
+    n = itemscollide()
+    if n == -1
 	    return
-	end
-	@control.itemsprites.delete(@items[n])
-	@items.delete_at(n)
     end
-    def underattack?
-	@e.each do |e|
+    @control.itemsprites.delete(@items[n])
+    @items.delete_at(n)
+  end
+
+  def underattack?
+    @e.each do |e|
 	    if e.rect.collide_rect?(@p)
-		@damage.check()
+        @damage.check()
 	    end
-	end
     end
-    def wincollide
-	@m.each do |m|
+  end
+
+  def wincollide
+    @m.each do |m|
 	    if m.property == 3
-		if @p.items == 6
-		    if m.rect.collide_rect?(@p):
-			@p.items = true
-		    end
-		end
+        if @p.items == 6
+          if m.rect.collide_rect?(@p)
+            @p.items = true
+          end
+        end
 	    end
-	end
     end
+  end
 end

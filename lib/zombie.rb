@@ -18,32 +18,37 @@
 
 
 class Zombie
-    include Rubygame::Sprites::Sprite
-    attr_accessor :action , :state , :retainer , :health
-    def initialize
-	super
-	@image = Rubygame::Surface.load("data/zombie.png")
-	@rect = Rubygame::Rect.new(0,0,*@image.size)
-	@state = 0
-	@move = ZombieMovement.new(self)
-	@retainer = [@rect.x,@rect.y]
-	@health = 3
-    end
-    def sets x , y , control
-	@rect.x = x
-	@rect.y = y
-	@move.set(control)
-    end
-    def act
-	@move.move()
-    end
-    def update move , dir
-	if dir == 0
+  include Rubygame::Sprites::Sprite
+  attr_accessor :action, :state, :retainer, :health
+
+  def initialize
+    super
+    @image = Rubygame::Surface.load("data/zombie.png")
+    @rect = Rubygame::Rect.new(0,0,*@image.size)
+    @state = 0
+    @move = ZombieMovement.new(self)
+    @retainer = [@rect.x,@rect.y]
+    @health = 3
+  end
+
+  # NOTE: This same method has existed in other objects.  Should be a module, or more likely a class they all inherit from.
+  def sets x , y , control
+    @rect.x = x
+    @rect.y = y
+    @move.set(control)
+  end
+
+  def act
+    @move.move()
+  end
+
+  def update move , dir
+    if dir == 0
 	    @rect.x += move
 	    @move.x += move
-	elsif dir == 1
+    elsif dir == 1
 	    @rect.y += move
 	    @move.y += move
-	end
     end
+  end
 end

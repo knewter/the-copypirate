@@ -16,35 +16,36 @@
 
 #You can contact the author at wikipediankiba@gmail.com
 class ItemTracker
-    attr_accessor :items
-    def initialize engine , control
-	@engine = engine
-	@control = control
-	@items = []
-	@sprites = @control.itemsprites
-	datacompute()
-    end
-    def datacompute
-	rows = 0
-	columns = 0
-	@engine.obj.items.each do |d|
+  attr_accessor :items
+  def initialize engine , control
+    @engine = engine
+    @control = control
+    @items = []
+    @sprites = @control.itemsprites
+    datacompute()
+  end
+  def datacompute
+    rows = 0
+    columns = 0
+    @engine.obj.items.each do |d|
+      # NOTE: magicnumbers
 	    a = columns * 80 + @engine.move
 	    b = rows * 60 + @engine.height
 	    x = a
 	    y = b
-	    if d == 1:
-		@items. << Item.new()
-		@items[-1].sets(x,y)
-		@sprites.<< @items[-1]
+	    if d == 1
+        @items. << Item.new()
+        @items[-1].sets(x,y)
+        @sprites.<< @items[-1]
 	    end
 	    columns = columns + 1
-	    if columns == 30:
-		rows = rows + 1
-		columns = 0
+	    if columns == 30
+        rows = rows + 1
+        columns = 0
 	    end
-	    if rows == 30:
-		return
+	    if rows == 30
+        return
 	    end
-	end
     end
+  end
 end

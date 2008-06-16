@@ -17,15 +17,16 @@
 #You can contact the author at wikipediankiba@gmail.com
 
 class Item
-    include Rubygame::Sprites::Sprite
+  include Rubygame::Sprites::Sprite
 	attr_accessor :rect
-    def initialize
-	super
-	@image = Rubygame::Surface.load("data/music.png")
-	@rect = Rubygame::Rect.new(0,0, *@image.size)
-    end
-    def sets x , y
-	@rect.x = x
-	@rect.y = y
-    end
+  MUSIC_IMAGE_PATH = "data/music.png"
+  def initialize
+    super
+    @image = Rubygame::Surface.load(MUSIC_IMAGE_PATH)
+    @rect  = Rubygame::Rect.new(0,0, *@image.size)
+  end
+  def sets x, y
+    @rect.x = x
+    @rect.y = y
+  end
 end
